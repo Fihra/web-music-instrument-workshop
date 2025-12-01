@@ -415,9 +415,14 @@ function detectHandedness(landmarks) {
 // MediaPipe Callback
 // ============================================
 function onHandsResults(results) {
-    // Clear canvas
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    // Draw video only if ready; otherwise use a semi-transparent overlay to keep screen bright
+    if (video.readyState === video.HAVE_ENOUGH_DATA) {
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    } else {
+        // Keep canvas visible with a subtle overlay instead of clearing to black
+        ctx.fillStyle = 'rgba(102, 126, 234, 0.15)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
 
     const fingertips = [4, 8, 12, 16, 20];
 

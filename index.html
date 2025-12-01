@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hand Pose Music - Tone.js + MediaPipe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-container">
+        <h1>🎵 Hand Pose Music Controller</h1>
+        
+        <div class="video-container">
+            <video id="video" width="640" height="480" autoplay muted playsinline></video>
+            <canvas id="canvas" width="640" height="480"></canvas>
+        </div>
+
+        <div class="info-panel">
+            <div class="gesture-info">
+                <h2>Detected Gesture:</h2>
+                <p id="gestureDisplay">Waiting for hand...</p>
+                <p id="synthDisplay">Synth: 📈 Sawtooth</p>
+            </div>
+            <div class="controls">
+                <button id="startBtn" class="btn btn-primary">Start Camera</button>
+                <button id="stopBtn" class="btn btn-danger">Stop Camera</button>
+            </div>
+            <div class="legend">
+                <h3>Gesture Sound Map:</h3>
+                <ul>
+                    <li>✌️ Peace: C Note</li>
+                    <li>☝️ Pointing Up: D Note</li>
+                    <li>👍 Thumbs Up: Eb Note</li>
+                    <li>🤘 Rock On: F Note</li>
+                    <li>👌 OK Sign: G Note</li>
+                    <li>👎 Thumbs Down: Ab Note</li>
+                    <li>👉 Point at Camera: Bb Note</li>
+                    <li>✋ Palm Hand: C5 Note</li>
+                </ul>
+            </div>
+            <div class="keyboard-controls">
+                <h3>Keyboard Controls:</h3>
+                <ul>
+                    <li><kbd>A</kbd> - 🌊 Sine Wave</li>
+                    <li><kbd>S</kbd> - 📦 Square Wave</li>
+                    <li><kbd>D</kbd> - △ Triangle Wave</li>
+                    <li><kbd>F</kbd> - 📈 Sawtooth Wave</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+</body>
+</html>
